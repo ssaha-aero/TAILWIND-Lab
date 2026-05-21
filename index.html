@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sandeep Saha - Academic Profile</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fcfcfc;
+        }
+        header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center; 
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-right: 30px;
+            border: 3px solid #2980b9; 
+            
+        }
+        .header-content {
+            flex-grow: 1;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-top: 0;
+        }
+        .contact-info {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 10px;
+        }
+        .nav-links {
+            margin-top: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2980b9;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 40px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        .pub-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .pub-journal {
+            font-style: italic;
+        }
+        
+        /* --- STYLING FOR NEWS SECTION & SLIDESHOW --- */
+        .news-container {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .news-text {
+            flex: 1; /* Takes up the remaining space on the left */
+        }
+        .news-date {
+            font-weight: bold;
+            color: #c0392b; 
+            margin-right: 10px;
+        }
+        .news-list {
+            list-style-type: none; 
+            padding-left: 0;
+        }
+        .news-list li {
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* The image carousel box */
+        .news-slideshow {
+            width: 350px;
+            height: 250px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            flex-shrink: 0; /* Prevents the box from squeezing */
+            border: 1px solid #ddd;
+        }
+        /* The images inside the carousel */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; /* Hides the images by default */
+            transition: opacity 0.8s ease-in-out; /* Creates the smooth fade effect */
+        }
+        .slide.active {
+            opacity: 1; /* Shows only the active image */
+        }
+        /* ------------------------------------------- */
+
+        .image-grid {
+            display: flex;
+            flex-direction: column; 
+            gap: 40px; 
+            margin-top: 25px;
+            align-items: center;
+        }
+        .image-grid img {
+            width: 100%; 
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+            border: 1px solid #ddd;
+        }
+
+        .members-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .member-card {
+            display: flex;
+            align-items: center;
+            background: #fdfdfd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eaeaea;
+            width: calc(50% - 10px); 
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .member-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid #bdc3c7;
+        }
+        .member-info h4 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        .member-info p {
+            margin: 0 0 3px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .member-info .focus {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.85em;
+        }
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-pic {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .member-card {
+                width: 100%; 
+            }
+            /* Stack the news text and slideshow on small screens */
+            .news-container {
+                flex-direction: column;
+            }
+            .news-slideshow {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="profile.jpg" alt="Dr. Sandeep Saha" class="profile-pic">
+        
+        <div class="header-content">
+            <h1>Dr. Sandeep Saha</h1>
+            <p class="subtitle">Associate Professor, Department of Aerospace Engineering</p>
+            <p class="subtitle">Indian Institute of Technology (IIT) Kharagpur</p>
+            
+            <div class="contact-info">
+                Email: <a href="mailto:ssaha@aero.iitkgp.ac.in">ssaha@aero.iitkgp.ac.in</a><br>
+                Contact:+91-3222-282854<br>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#news">News</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#group">Research Group</a>
+                <a href="#teaching">Teaching</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="about" class="section">
+            <h2>About</h2>
+<p>Welcome to my academic homepage. I am an Associate Professor in the Department of Aerospace Engineering at IIT Kharagpur.Our research explores the extraordinary transoceanic       migration of the <em>Pantala flavescens</em> dragonfly across the Indian Ocean. We investigate the complex bio-aerodynamic principles sustaining this epic marathon, specifically focusing on their corrugated wing structures and tandem wing configurations. Utilizing experimental techniques like smoke flow visualization and high-speed Schlieren imaging alongside direct numerical simulations, we decode the vortex dynamics and lift-generation strategies of these insects. These natural wing corrugations significantly delay stall and enhance overall aerodynamic efficiency. Ultimately, we apply these biological discoveries to design and engineer the next generation of highly efficient, bio-inspired Micro Aerial Vehicles (MAVs).</p>
+        </div>
+
+        <div id="news" class="section">
+            <h2>Latest News</h2>
+            <div class="news-container">
+                <div class="news-text">
+                    <ul class="news-list">
+                        <li><span class="news-date">[Upcoming 31 May 2026]</span> Talk on “Infinite Journeys on Finite Wings: A Dragonfly’s Epic Marathon across the Indian Ocean” at the Jawaharlal Nehru Planetarium, Bangalore (Mini Auditorium, U R Rao Bhavana) from 4:00 PM to 5:30 PM. </li>
+                        <li><span class="news-date">[MAY 2026]</span> Represented IIT kharagpur at AIAA. Ranked 5th in Asia and 39th Globally.</li>
+                    </ul>
+                </div>
+                
+                <div class="news-slideshow">
+                    <img src="KAAPI.jpg" class="slide" alt="News Image 1">
+                    <img src="AIAA1.jpeg" class="slide active" alt="News Image 2">
+                    <img src="AIAA2.jpeg" class="slide" alt="News Image 3">
+                    <img src="AIAA3.jpeg" class="slide" alt="News Image 4">
+                    <img src="AIAA4.jpeg" class="slide" alt="News Image 5">
+                    <img src="AIAA5.jpeg" class="slide" alt="News Image 6">
+                    <img src="AIAA6.jpeg" class="slide" alt="News Image 7">
+                </div>
+            </div>
+        </div>
+
+        <div id="research" class="section">
+            <h2>Research Interests</h2>
+            <p>Our group's research lies at the intersection of aerospace engineering, computational mechanics, and high-performance computing. Core focus areas include:</p>
+            <ul>
+                <li><strong>Numerical Analysis:</strong> Development of high-order methods, including Chebyshev spectral collocation techniques for differential equations.</li>
+                <li><strong>Computational Fluid Dynamics:</strong> Design of robust global space-time solvers and handling of singularly perturbed problems with complex boundary layers.</li>
+                <li><strong>Advanced Coordinate Mappings:</strong> Utilizing adaptive, algebraic, and tangent mapping schemes to resolve sharp interior and boundary layers in physical domains.</li>
+                <li><strong>High-Performance Computing:</strong> Accelerating multi-dimensional solvers for convection-diffusion models.</li>
+            </ul>
+
+            <h3>Research Highlights</h3>
+            <div class="image-grid">
+                <img src="Slide.jpg" alt="Research Highlight 1">
+                <img src="Slide1.jpg" alt="Research Highlight 2">
+                <img src="Slide2.jpg" alt="Research Highlight 3">
+            </div>
+
+        </div>
+
+        <div id="publications" class="section">
+            <h2>Selected Publications & Patents</h2>
+            
+            <h3>Patents</h3>
+            <ul>
+                <li>
+                    <span class="pub-title">Bladeless Multistage Compressor</span><br>
+                    <strong>S. Saha</strong>, A. Mandal, M. P. Panda, and R. Raj.<br>
+                    <span class="pub-journal">Indian Patent Application No. 202431043995</span>. Published in the Official Journal No. 24/2025 on 13/06/2025.
+                </li>
+                <li>
+                    <span class="pub-title">Active 3D gust generator system for wind tunnel testing</span><br>
+                    M. Arya and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Indian Patent Application No. 202431037311</span>. Published in the Official Journal No. 24/2025 on 13/06/2025.
+                </li>
+                <li>
+                    <span class="pub-title">Automatic Bluetooth-controlled Internal Space Spray Dispenser</span><br>
+                    G. Wadhwa, M. Arya, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Indian Patent Application No. 202431037315</span> (Filed).
+                </li>
+                <li>
+                    <span class="pub-title">Forest Cover Analysis Using Aerial Imagery</span><br>
+                    <strong>S. Saha</strong>, V. A. Takte, A. K. Singh, K. Ramani, J. Gupta, S. K. Singh, I. Kanodia, D. Bawari, N. K. Kadam, and S. Mohanty.<br>
+                    <span class="pub-journal">Indian Patent Application No. 22072</span> (Filed).
+                </li>
+            </ul>
+
+            <h3>Books</h3>
+            <ul>
+                <li>
+                    <span class="pub-title">Golf and Wind: The Physics of Playing Golf in Wind</span><br>
+                    S. Malik and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Springer Nature Singapore</span>, 2021.
+                </li>
+            </ul>
+            
+            <h3>Book Chapters & Technical Reports</h3>
+            <ul>
+                <li>
+                    <span class="pub-title">Aerodynamic Performance of a Tandem Wing Configuration Inspired from Dragonfly Gliding Flight for MAV Application</span><br>
+                    R. Adak, A. Mandal, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Lect. Notes Mechanical Engineering: Fluid Mechanics and Fluid Power (Volume 2), Springer Nature</span>.
+                </li>
+                <li>
+                    <span class="pub-title">On the evolution of vortical disturbances in two-fluid boundary layers</span><br>
+                    T. A. Zaki, <strong>S. Saha</strong>, and S. Y. Jung.<br>
+                    <span class="pub-journal">Technical Report FA8655-09-1-3059</span>, European Office of Aerospace Research and Development, 2011.
+                </li>
+            </ul>
+
+            <h3>Journal Articles</h3>
+            <ul>
+                <li>
+                    <span class="pub-title">A unified perspective on vortical and interfacial instabilities in fluid layers</span><br>
+                    <strong>S. Saha</strong> and S. Chakraborty.<br>
+                    <span class="pub-journal">Frontiers in Mechanical Engineering</span>, 11:1706474, 2025.
+                </li>
+                <li>
+                    <span class="pub-title">Direct numerical simulations of dragonfly-inspired corrugated tandem airfoils at low Reynolds number</span><br>
+                    R. Adak, A. Mandal, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Bioinspiration & Biomimetics</span>, 20(4): 046013, 2025.
+                </li>
+                <li>
+                    <span class="pub-title">Reynolds-averaged Navier-Stokes assisted direct numerical simulation of low Reynolds number flow over airfoils</span><br>
+                    R. Adak, A. Mandal, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Physics of Fluids</span>, 36: 127138, 2024.
+                </li>
+                <li>
+                    <span class="pub-title">Assessment of etiology and pharmacotherapy of patients with anemia in chronic myeloid leukemia: Challenges and opportunities in a tertiary care government hospital</span><br>
+                    R. Jana, S. N. Baul, <strong>S. Saha</strong>, S. Chattopadhyay, A. Mandal, and A. Ghosh.<br>
+                    <span class="pub-journal">Natl. J. Physiol. Pharm. Pharmacol.</span>, 14(12): 2525-2529, 2024.
+                </li>
+                <li>
+                    <span class="pub-title">Transoceanic migration network of dragonfly Pantala flavescens: origin, dispersal and timing</span><br>
+                    K. S. Ranjan, A. A. Pawar, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Frontiers in Ecology and Evolution</span>, 11:1152384, 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Aerodynamic Efficiency Enhancement of Delta Wings for Micro Air Vehicles Using Shape-Optimization</span><br>
+                    B. B. Gurung and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Journal of Aircraft</span>, 60(3), 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Stepped aerospike for enhanced drag reduction using multiple intermediate shocks</span><br>
+                    A. D. Kumar, A. Mandal, S. Majumder, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Shock Waves</span>, 32: 485-495, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Colliding respiratory jets as a mechanism of air exchange and pathogen transport during conversations</span><br>
+                    A. Giri, N. Biswas, D. L. Chase, N. Xue, M. Abkarian, S. Mendez, <strong>S. Saha</strong>, and H. A. Stone.<br>
+                    <span class="pub-journal">Journal of Fluid Mechanics</span>, 930(R1), 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Corrugation Assisted Enhancement of Aerodynamic Characteristics of Delta Wing for Micro Aerial Vehicle</span><br>
+                    P. Mukherjee, A. A. Pawar, K. S. Ranjan, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Journal of Aircraft</span>, 58(2), 2021.
+                </li>
+                <li>
+                    <span class="pub-title">Outcome of Surveillance Stool Culture and Sensitivity, Followed by Needful Intervention in Patients Undergoing Hematopoietic Stem Cell Transplant...</span><br>
+                    S. Roy, P. Nandi, <strong>S. Saha</strong>, S. N. Baul, S. Bhanja, R. De, and T. K. Dolai.<br>
+                    <span class="pub-journal">Original Article</span>.
+                </li>
+                <li>
+                    <span class="pub-title">A reconstruction-based Chebyshev-collocation method for the Poisson equation: An accurate treatment of the Gibbs-Wilbraham phenomenon on irregular interfaces</span><br>
+                    S. Ray and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Journal of Computational Physics</span>, 418: 109559, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">An exponentially accurate spectral reconstruction technique for the single-phase one-dimensional Stefan problem with constant coefficients</span><br>
+                    S. Ray, A. K. Suthar, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">International Journal of Heat and Mass Transfer</span>, 158: 119841, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Coriolis force-driven instabilities in stratified miscible layers on a rotationally actuated microfluidic platform</span><br>
+                    S. Sengupta, S. Ghosh, <strong>S. Saha</strong>, and S. Chakraborty.<br>
+                    <span class="pub-journal">Physical Review Fluids</span>, 4: 113902, 2019.
+                </li>
+                <li>
+                    <span class="pub-title">Rotational instabilities in microchannel flows</span><br>
+                    S. Sengupta, S. Ghosh, <strong>S. Saha</strong>, and S. Chakraborty.<br>
+                    <span class="pub-journal">Physics of Fluids</span>, 31: 054101, 2019.
+                </li>
+                <li>
+                    <span class="pub-title">Theoretical performance estimation of shrouded-twin-rotor wind turbines using the actuator disk theory</span><br>
+                    V. Kumar and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Renewable Energy</span>, 134: 961-969, 2019.
+                </li>
+                <li>
+                    <span class="pub-title">Disturbance amplification in boundary layers over thin wall films</span><br>
+                    <strong>S. Saha</strong>, J. Page, and T. A. Zaki.<br>
+                    <span class="pub-journal">Physics of Fluids</span>, 28(2): 024108, 2016.
+                </li>
+                <li>
+                    <span class="pub-title">Autocatalytic Reaction Fronts Inside a Porous Medium of Glass Spheres</span><br>
+                    S. Atis, <strong>S. Saha</strong>, H. Auradou, D. Salin, and L. Talon.<br>
+                    <span class="pub-journal">Physical Review Letters</span>, 110: 148301, 2013.
+                </li>
+                <li>
+                    <span class="pub-title">Phase diagram of sustained wave fronts opposing the flow in disordered porous media</span><br>
+                    <strong>S. Saha</strong>, et al.<br>
+                    <span class="pub-journal">EPL (Europhysics Letters)</span>, 101: 38003, 2013.
+                </li>
+                <li>
+                    <span class="pub-title">Low Reynolds number suspension gravity currents</span><br>
+                    <strong>S. Saha</strong>, D. Salin, and L. Talon.<br>
+                    <span class="pub-journal">The European Physical Journal E</span>, 36:85, 2013.
+                </li>
+                <li>
+                    <span class="pub-title">CHEMO-hydrodynamic coupling between forced advection in porous media and self-sustained chemical waves</span><br>
+                    S. Atis, <strong>S. Saha</strong>, H. Auradou, J. Martin, N. Rakotomalala, L. Talon, and D. Salin.<br>
+                    <span class="pub-journal">Chaos</span>, 22: 037108, 2012.
+                </li>
+                <li>
+                    <span class="pub-title">On shear sheltering and the structure of vortical modes in single- and two-fluid boundary layers</span><br>
+                    T. A. Zaki and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Journal of Fluid Mechanics</span>, 626: 111-147, 2009.
+                </li>
+            </ul>
+
+            <h3>Conference Proceedings</h3>
+            <ul>
+                <li>
+                    <span class="pub-title">Investigation of Flight Conditions where Box-Wing Outperforms Mono-Wing Configurations for Small UAVs</span><br>
+                    J.J. Aloor, B.B. Gurung, G. Wadhwa, M. Singh, R. Bhattacharya, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">AIAA SCITECH 2025 Forum</span>, 2025.
+                </li>
+                <li>
+                    <span class="pub-title">Direct numerical simulations of Dragonfly-inspired Tandem Wing Configuration at Low Reynolds Number</span><br>
+                    R. Adak, A. Mandal, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">APS March Meeting 2024</span>, Minneapolis, MN, USA, March 4–8, 2024.
+                </li>
+                <li>
+                    <span class="pub-title">Numerical optimization and compatibility assessment of millimeter-scale Tesla turbines in ultra-micro gas turbines</span><br>
+                    A. Mandal, R. Adak, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">APS March Meeting 2024</span>, Minneapolis, MN, USA, March 4–8, 2024.
+                </li>
+                <li>
+                    <span class="pub-title">The self-stabilizing nature of a dart and its low Reynolds number aerodynamic characteristics</span><br>
+                    A.A. Pawar, K.S. Ranjan, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">76th Annual Meeting of the APS Division of Fluid Dynamics</span>, Washington DC, USA, November 19-21, 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Regime transitions in a laminar film flowing over a cylinder</span><br>
+                    G. Wadhwa, A. Tambe, J. Mohd, D. Poddar, R. Rajan, G. Mandal, P. Kadam, <strong>S. Saha</strong>, and D. Das.<br>
+                    <span class="pub-journal">76th Annual Meeting of the APS Division of Fluid Dynamics</span>, Washington DC, USA, November 19-21, 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Experimental force measurement study of Pantala flavescens in tailwind flight</span><br>
+                    K.S. Ranjan, A.A. Pawar, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">76th Annual Meeting of the APS Division of Fluid Dynamics</span>, Washington DC, USA, November 19-21, 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Wind compensation and flight in tailwind by dragonfly species Pantala flavescens, during the transoceanic migration</span><br>
+                    <strong>S. Saha</strong>, K.S. Ranjan, A.A. Pawar, and A. Roy.<br>
+                    <span class="pub-journal">76th Annual Meeting of the APS Division of Fluid Dynamics</span>, Washington DC, USA, November 19-21, 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Regime transition from stranded to reconnected streams in a laminar film falling on a horizontal cylinder</span><br>
+                    G. Wadhwa, J. Mohd., D. Poddar, R. Rajan, G. Mandal, P.V. Kadam, <strong>S. Saha</strong>, and D. Das.<br>
+                    <span class="pub-journal">14th European Fluid Mechanics Conference (EFMC14)</span>, Athens, Greece, September 13-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Puff-like structures in transition of round jets</span><br>
+                    N. Biswas, G. Wadhwa, <strong>S. Saha</strong>, and D. Das.<br>
+                    <span class="pub-journal">14th European Fluid Mechanics Conference (EFMC14)</span>, Athens, Greece, September 13-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Direct numerical simulation of a Bio-inspired corrugated airfoil in presence of turbulent free-stream</span><br>
+                    <strong>S. Saha</strong> and R. Adak.<br>
+                    <span class="pub-journal">14th European Fluid Mechanics Conference (EFMC14)</span>, Athens, Greece, September 13-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Aerodynamic performance of a tandem wing configuration inspired from dragonfly gliding flight for MAV application</span><br>
+                    R. Adak, A. Mandal, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">9th International and 49th National Conference on Fluid Mechanics and Fluid Power (FMFP)</span>, IIT Roorkee, December 14-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Performance enhancement of a 100 watts class Tesla turbine</span><br>
+                    R. Adak, A. Mandal, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">9th International and 49th National Conference on Fluid Mechanics and Fluid Power (FMFP)</span>, IIT Roorkee, December 14-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">High-speed Schlieren imaging as a tool for identifying vortices in dragonfly flight</span><br>
+                    A.A. Pawar, K.S. Ranjan, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">9th International and 49th National Conference on Fluid Mechanics and Fluid Power (FMFP)</span>, IIT Roorkee, December 14-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Smoke Flow Visualization of Dragonfly Pantala Flavescens in Tethered Flight</span><br>
+                    K.S. Ranjan, A.A. Pawar, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">9th International and 49th National Conference on Fluid Mechanics and Fluid Power (FMFP)</span>, IIT Roorkee, December 14-16, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Pathogen transport and air exchange during short conversations</span><br>
+                    A. Giri, N. Biswas, D. Chase, N. Xue, M. Abkarian, S. Mendez, <strong>S. Saha</strong>, and H.A. Stone.<br>
+                    <span class="pub-journal">APS March Meeting 2022</span>, Chicago, IL, USA, March 14–18, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Colliding respiratory jets as a mechanism of air exchange and pathogen transport during conversations</span><br>
+                    A. Giri, N. Biswas, D. Chase, N. Xue, M. Abkarian, S. Mendez, <strong>S. Saha</strong>, and H.A. Stone.<br>
+                    <span class="pub-journal">74th Annual Meeting of the APS Division of Fluid Dynamics</span>, Phoenix, AZ, USA, November 21-23, 2021.
+                </li>
+                <li>
+                    <span class="pub-title">Stall Suppression using Constant and Pulsatile Mass flux Jet Blowing on NACA 0015 Airfoil</span><br>
+                    A. Giri and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Proceedings of the 8th International and 47th National Conference on Fluid Mechanics and Fluid Power (FMFP)</span>, IIT Guwahati, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Assessment of wind's impact on a golf ball's trajectory and gameplay</span><br>
+                    <strong>S. Saha</strong> and S. Malik.<br>
+                    <span class="pub-journal">73rd Annual Meeting of the APS Division of Fluid Dynamics</span>, Chicago, IL, USA, November 22-24, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Puffs in the self-similar region of a low Reynolds number round jet: a new instability</span><br>
+                    D. Das, N. Biswas, <strong>S. Saha</strong>, and A. Sharma.<br>
+                    <span class="pub-journal">73rd Annual Meeting of the APS Division of Fluid Dynamics</span>, Chicago, IL, USA, November 22-24, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Trans-continental migration of dragonfly Pantala Flavescens between India and Africa: Energetics and Role of wind</span><br>
+                    K.S. Ranjan, A.A. Pawar, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">73rd Annual Meeting of the APS Division of Fluid Dynamics</span>, Chicago, IL, USA, November 22-24, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Aerodynamics of dart</span><br>
+                    A.A. Pawar, K.S. Ranjan, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">73rd Annual Meeting of the APS Division of Fluid Dynamics</span>, Chicago, IL, USA, November 22-24, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Box Wing: Aerodynamic Experimental Study for Applications in MAVS</span><br>
+                    M. Singh, J. J. Aloor, A. Singh, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">National Conference on Wind Tunnel Testing (NCWT-06)</span>, IIT Kanpur, 2020.
+                </li>
+                <li>
+                    <span class="pub-title">Reconstructing the piecewise-smooth solution of ordinary differential equations for Chebyshev-collocation solution with pointwise exponential convergence</span><br>
+                    <strong>S. Saha</strong> and S. Ray.<br>
+                    <span class="pub-journal">72nd Annual Meeting of the APS Division of Fluid Dynamics</span>, Seattle, WA, USA, November 23-26, 2019.
+                </li>
+                <li>
+                    <span class="pub-title">Numerical Analysis of Aerodynamic Characteristics of a Corrugated MAV wing</span><br>
+                    P. Mukherjee, M. J. Mujawar, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">21st Annual CFD Symposium</span>, NAL, Bangalore, India, August 8 - 9, 2019.
+                </li>
+                <li>
+                    <span class="pub-title">Effect of Wind on the Trajectory of Approach Shots in Golf</span><br>
+                    S. Malik, S. Ranjan, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">Proceedings of the 7th International and 45th National Conference on Fluid Mechanics and Fluid Power (FMFP)</span>, IIT Bombay, December 10-12, 2018.
+                </li>
+                <li>
+                    <span class="pub-title">An Experimental study on instabilities in Low Reynolds number axisymmetric jets</span><br>
+                    N. Biswas, A.A. Mukherjee, K.K. Bharadwaj, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">12th European Fluid Mechanics Conference</span>, Vienna, Austria, September 9-13, 2018.
+                </li>
+                <li>
+                    <span class="pub-title">Moderating re-attachment shocks on aerospiked bodies for enhanced drag reduction</span><br>
+                    A.D. Kumar, S. Mujumder, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">12th European Fluid Mechanics Conference</span>, Vienna, Austria, September 9-13, 2018.
+                </li>
+                <li>
+                    <span class="pub-title">Aerodynamic characterization of a model aircraft using wind-tunnel testing and numerical simulations</span><br>
+                    Y. Pandya, Y.G. Sreevanshu, A. Sharma, K. Jain, S. Jena, A. A. Pawar, K. S. Ranjan, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">2017 First International Conference on Recent Advances in Aerospace Engineering (ICRAAE)</span>, Coimbatore, India, March 3-4, 2017.
+                </li>
+                <li>
+                    <span class="pub-title">Effect of sweep angle on wing-strake vortex - interaction and breakdown over double delta wings</span><br>
+                    A. Sinha, A. K. Suthar, S. Sahoo, A. A. Pawar, K. S. Ranjan, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">2017 First International Conference on Recent Advances in Aerospace Engineering (ICRAAE)</span>, Coimbatore, India, March 3-4, 2017.
+                </li>
+                <li>
+                    <span class="pub-title">Performance analysis of a centimeter scale Tesla turbine for micro-air vehicles</span><br>
+                    A. Mandal and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">International Conference on Electronics, Communication and Aerospace Technology (ICECA)</span>, Coimbatore, India, April 20-22, 2017.
+                </li>
+                <li>
+                    <span class="pub-title">Mode competition and destabilization of microfluidic channel flows by the Coriolis force</span><br>
+                    S. Sengupta, <strong>S. Saha</strong>, and S. Chakraborty.<br>
+                    <span class="pub-journal">69th Annual Meeting of the APS Division of Fluid Dynamics</span>, Portland, OR, USA, November 20-22, 2016.
+                </li>
+                <li>
+                    <span class="pub-title">Competing disturbance amplification mechanisms in two-fluid boundary layers</span><br>
+                    <strong>S. Saha</strong>, J. Page, and T. A. Zaki.<br>
+                    <span class="pub-journal">68th Annual Meeting of the APS Division of Fluid Dynamics</span>, Boston, MA, USA, November 22-24, 2015.
+                </li>
+                <li>
+                    <span class="pub-title">Sustained Reaction Waves Against Flow in Porous Medium: Frozen Fronts</span><br>
+                    D. Salin, S. Atis, H. Auradou, <strong>S. Saha</strong>, and L. Talon.<br>
+                    <span class="pub-journal">65th Annual Meeting of the APS Division of Fluid Dynamics</span>, San Diego, CA, USA, November 18-20, 2012.
+                </li>
+                <li>
+                    <span class="pub-title">Particle-laden viscous gravity currents</span><br>
+                    <strong>S. Saha</strong>, L. Talon, and D. Salin.<br>
+                    <span class="pub-journal">64th Annual Meeting of the APS Division of Fluid Dynamics</span>, Baltimore, MD, USA, November 20-22, 2011.
+                </li>
+                <li>
+                    <span class="pub-title">Particle-laden viscous gravity currents</span><br>
+                    <strong>S. Saha</strong>, L. Talon, and D. Salin.<br>
+                    <span class="pub-journal">Week of Science</span>, Madrid, Spain, September 12-16, 2011.
+                </li>
+                <li>
+                    <span class="pub-title">On the transient amplification of vortical disturbances in sheared wall-films</span><br>
+                    <strong>S. Saha</strong> and T.A. Zaki.<br>
+                    <span class="pub-journal">International Conference on Multiscale Complex Fluid Flows and Interfacial Phenomena</span>, Brussels, Belgium, November 8-10, 2010.
+                </li>
+                <li>
+                    <span class="pub-title">Stabilization of wall shear beneath vortical disturbance using a thin film</span><br>
+                    <strong>S. Saha</strong>, S.Y. Jung, and T.A. Zaki.<br>
+                    <span class="pub-journal">7th International Conference on Multiphase Flow</span>, Tampa, FL, USA, May 30 - June 4, 2010.
+                </li>
+            </ul>
+
+            <h3>Preprints</h3>
+            <ul>
+                <li>
+                    <span class="pub-title">Techno economic feasibility study of solar ORC in India</span><br>
+                    A. Biswas, A. Mandal, A. Bandopadhyay, S. Mitra, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">arXiv preprint arXiv:2511.19564</span>, 2025.
+                </li>
+                <li>
+                    <span class="pub-title">Transoceanic migration of dragonflies and branched optimal route networks</span><br>
+                    K. S. Ranjan, A. A. Pawar, A. Roy, and <strong>S. Saha</strong>.<br>
+                    <span class="pub-journal">arXiv preprint arXiv:2206.11226</span>, 2023.
+                </li>
+                <li>
+                    <span class="pub-title">Puff-like instability in laminar to turbulence supercritical transition of round jets</span><br>
+                    N. Biswas, A. Sharma, <strong>S. Saha</strong>, and D. Das.<br>
+                    <span class="pub-journal">arXiv preprint arXiv:2202.11771</span>, 2022.
+                </li>
+                <li>
+                    <span class="pub-title">Rotational Instabilities in Stratified Miscible Layers</span><br>
+                    S. Sengupta, S. Ghosh, <strong>S. Saha</strong>, and S. Chakraborty.<br>
+                    <span class="pub-journal">arXiv preprint arXiv:1811.11450</span>, 2018.
+                </li>
+                <li>
+                    <span class="pub-title">Self-Sustained Reaction Fronts in Porous Media</span><br>
+                    S. Atis, <strong>S. Saha</strong>, H. Auradou, D. Salin, and L. Talon.<br>
+                    <span class="pub-journal">arXiv preprint arXiv:1210.3518</span>, 2012.
+                </li>
+            </ul>
+        </div>
+
+        <div id="group" class="section">
+            <h2>Research Group</h2>
+            <p>Our research group is a collaborative team of postdoctoral researchers and Ph.D. scholars dedicated to pushing the boundaries of computational and experimental fluid dynamics. We work on interdisciplinary challenges. We are always looking for highly motivated students and researchers with a strong background to join our lab; if interested, please reach out via email with your CV.</p>
+
+            <h3>Postdoctoral Researchers</h3>
+            <div class="members-grid">
+                
+                <div class="member-card">
+                    <img src="ANAND.jpeg" alt="Postdoctoral Researcher 1" class="member-pic">
+                    <div class="member-info">
+                        <h4>Anand Verma</h4>
+                        
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="postdoc2.jpeg" alt="Postdoctoral Researcher 2" class="member-pic">
+                    <div class="member-info">
+                        <h4>Monal Bharty</h4>
+                        
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="PANKAJ.jpeg" alt="Postdoctoral Researcher 3" class="member-pic">
+                    <div class="member-info">
+                        <h4>Pankaj Barman</h4>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            
+            <h3>Current Ph.D. Students</h3>
+            <div class="members-grid">
+                
+                <div class="member-card">
+                    <img src="student1.jpg" alt="Ph.D. Student 1" class="member-pic">
+                    <div class="member-info">
+                        <h4>Rajosik Adak</h4>
+                        
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="DWARKESH.jpeg" alt="Ph.D. Student 2" class="member-pic">
+                    <div class="member-info">
+                        <h4>Dwarkesh Hasmukhbhai Parmar</h4>
+                        
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="ANUPAM.jpeg" alt="Ph.D. Student 3" class="member-pic">
+                    <div class="member-info">
+                        <h4>Anupam Kimothi</h4>
+                        
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="ODA.jpeg" alt="Ph.D. Student 4" class="member-pic">
+                    <div class="member-info">
+                        <h4>Oda Demissie Bonja</h4>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+
+            
+
+            </div>
+        </div>
+
+        <div id="teaching" class="section">
+            <h2>Teaching</h2>
+            
+            <h3>Theory</h3>
+            <ul>
+                <li><strong></strong>Viscous Flow Theory</li>
+                <li><strong></strong>Aerodynamics</li>
+
+  <li><strong></strong>Low Speed Aerodynamics</li>
+            </ul>
+            
+            <h3>Laboratory</h3>
+            <ul>
+                <li><strong></strong>Aerodynamics Laboratory II</li>
+                <li><strong></strong>Aerospace Laboratory II</li>
+<li><strong></strong>DIY Laboratory</li>
+<li><strong></strong>Innovation Laboratory II</li>
+<li><strong></strong>Flight Testing Laboratory II</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dr. Sandeep Saha. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentSlideIndex = 0;
+            const slides = document.querySelectorAll('.news-slideshow .slide');
+            
+            // If there are slides, start the automated rotation
+            if (slides.length > 0) {
+                setInterval(function() {
+                    // Remove 'active' class from current slide
+                    slides[currentSlideIndex].classList.remove('active');
+                    
+                    // Move to the next slide, loop back to start if at the end
+                    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                    
+                    // Add 'active' class to the new current slide
+                    slides[currentSlideIndex].classList.add('active');
+                }, 2000); // 2000 milliseconds = 2 seconds
+            }
+        });
+    </script>
+
+</body>
+</html>
