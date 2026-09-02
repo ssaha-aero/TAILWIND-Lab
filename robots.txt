@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+ 
+Sitemap: https://ssaha-aero.github.io/TAILWIND-Lab/sitemap.xml
